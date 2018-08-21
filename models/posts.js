@@ -15,8 +15,8 @@ const postSchema = new Schema({
   html: {type: String, default: ''},
   feature_image: {type: String, default: ''},
   status: {type: String, default: ''},
-  created_at: {type: Date, default: ''},
-  updated_at: {type: Date, default: ''},
+  created_at: {type: Number, default: 0},
+  updated_at: {type: Number, default: 0},
   label: {type: String, default: ''},
   abbr: {type: String, default: ''},
 })
