@@ -64,7 +64,7 @@ app.all('*',function (req, res, next) {
   // res.header("Access-Control-Allow-Credentials", true); //可以带cookies
 
   if (req.method == 'OPTIONS') {
-    res.send(200); /让options请求快速返回/
+    res.sendStatus(200); /让options请求快速返回/
   }
   else {
     next();

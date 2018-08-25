@@ -47,18 +47,35 @@ class Post {
     }
   }
 
-}
-// const getList = function(req, res, next) {
+  async updatePost(req, res, next) {
+    console.log(req);
+    const result = {
+      code: 0,
+      msg: 'ok',
+      data: 'fine'
+    }
+    const thisData = req.body;
+    // 获取当前时间
+    thisData.updated_at = Date.parse(new Date()) / 1000;
+    const insertData = new PostModel(thisData);
+    console.log(thisData);
+    // try {
+    //   insertData.save(function(error, doc) {
+    //     if(error){
+    //       console.log("error :" + error);
+    //     }else{
+    //       console.log(doc);
+    //     }
+    //   });
+    // } catch(err) {
+    //   console.log('更新manage detail失败');
+    //   result.code = -1;
+    //   result.msg = 'update detail error';
+    // } finally {
+    //   res.send(JSON.stringify(result));
+    // }
+  }
 
-//   PostModel.find().then(res => {
-//     console.log(res);
-//   })
-//   const result = {
-//     code: 0,
-//     msg: 'ok',
-//     data: 'haha'
-//   }
-// 	res.send(JSON.stringify(result));
-// }
+}
 
 export default new Post();

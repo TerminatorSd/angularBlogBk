@@ -14,6 +14,7 @@ const postSchema = new Schema({
   markdown: {type: String, default: ''},
   html: {type: String, default: ''},
   feature_image: {type: String, default: ''},
+  // 0 未发布， 1 已发布
   status: {type: String, default: ''},
   created_at: {type: Number, default: 0},
   updated_at: {type: Number, default: 0},

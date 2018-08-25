@@ -10,5 +10,8 @@ var router = express.Router();
 
 router.get('/list', Post.getList);
 router.get('/detail', Post.getDetail);
+router.post('/update', function(req,res){
+    console.log(req.body);
+});
 
 export default router;
