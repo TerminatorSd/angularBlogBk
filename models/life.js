@@ -9,22 +9,19 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const postSchema = new Schema({
-  id: {type: String},
+const lifeSchema = new Schema({
   title: {type: String, default: ''},
-  markdown: {type: String, default: ''},
-  html: {type: String, default: ''},
-  feature_image: {type: String, default: ''},
+  location: {type: String, default: ''},
+  content: {type: String, default: ''},
   // 0 未发布， 1 已发布
-  status: {type: String, default: ''},
   created_at: {type: Number, default: 0},
   updated_at: {type: Number, default: 0},
-  label: {type: String, default: ''},
-  abbr: {type: String, default: ''},
+  status: {type: String, default: ''},
+  img: {type: String, default: ''},
 })
 
-postSchema.index({id: 1});
+lifeSchema.index({id: 1});
 
-const Post = mongoose.model('Post', postSchema);
+const Life = mongoose.model('Life', lifeSchema);
 
-export { Post };
+export { Life };

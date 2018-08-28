@@ -41,6 +41,8 @@ const imgBaseUrl = '../'
 // 加了接收不到请求？
 // app.use(history());
 app.use(cookieParser());
+// 不添加这个可能拿不到json body 数据
+app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({extended:false}));
 app.use(express.static('public'));
 // var MongoStore = connectMongo(session);

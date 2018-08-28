@@ -10,8 +10,7 @@ var router = express.Router();
 
 router.get('/list', Post.getList);
 router.get('/detail', Post.getDetail);
-router.post('/update', function(req,res){
-    console.log(req.body);
-});
+router.post('/update', Post.updatePost);
+router.post('/add', Post.addPost);
 
 export default router;

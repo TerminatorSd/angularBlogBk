@@ -7,7 +7,9 @@
 */
 
 import posts from './posts.js';
+import life from './life.js';
 
 export default app => {
 	app.use('/posts', posts);
+  app.use('/life', life);
 }

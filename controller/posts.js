@@ -30,7 +30,6 @@ class Post {
 
   async getDetail(req, res, next) {
     const id = req.query.id;
-    console.log(id);
     const result = {
       code: 0,
       msg: 'ok',
@@ -39,7 +38,6 @@ class Post {
     try {
       result.data = await PostModel.findById(id);
     } catch(err) {
-      console.log('获取post detail失败');
       result.code = -1;
       result.msg = 'get detail error';
     } finally {
@@ -48,7 +46,35 @@ class Post {
   }
 
   async updatePost(req, res, next) {
-    console.log(req);
+    const result = {
+      code: 0,
+      msg: 'ok',
+      data: 'fine'
+    }
+    const thisData = req.body;
+    const conditions = { _id : thisData._id };
+    console.log(thisData);
+    // 获取当前时间
+    thisData.updated_at = Date.parse(new Date()) / 1000;
+
+    try {
+      PostModel.update(conditions, thisData, function (err) {
+        if(err) {
+          console.log('err')
+        } else {
+          console.log('success');
+        }
+      });
+      // throw new Error('error');
+    } catch(err) {
+      result.code = -1;
+      result.msg = 'update detail error';
+    } finally {
+      res.send(JSON.stringify(result));
+    }
+  }
+
+  async addPost(req, res, next) {
     const result = {
       code: 0,
       msg: 'ok',
@@ -56,24 +82,18 @@ class Post {
     }
     const thisData = req.body;
     // 获取当前时间
-    thisData.updated_at = Date.parse(new Date()) / 1000;
+    thisData.created_at = Date.parse(new Date()) / 1000
+    thisData.updated_at = thisData.created_at;
     const insertData = new PostModel(thisData);
-    console.log(thisData);
-    // try {
-    //   insertData.save(function(error, doc) {
-    //     if(error){
-    //       console.log("error :" + error);
-    //     }else{
-    //       console.log(doc);
-    //     }
-    //   });
-    // } catch(err) {
-    //   console.log('更新manage detail失败');
-    //   result.code = -1;
-    //   result.msg = 'update detail error';
-    // } finally {
-    //   res.send(JSON.stringify(result));
-    // }
+
+    try {
+      insertData.save();
+    } catch(err) {
+      result.code = -1;
+      result.msg = 'update detail error';
+    } finally {
+      res.send(JSON.stringify(result));
+    }
   }
 
 }
