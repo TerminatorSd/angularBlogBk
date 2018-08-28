@@ -12,5 +12,7 @@ router.get('/list', Post.getList);
 router.get('/detail', Post.getDetail);
 router.post('/update', Post.updatePost);
 router.post('/add', Post.addPost);
+router.post('/delete', Post.deletePost);
+router.post('/upload', Post.uploadImg);
 
 export default router;

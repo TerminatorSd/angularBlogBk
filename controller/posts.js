@@ -58,13 +58,7 @@ class Post {
     thisData.updated_at = Date.parse(new Date()) / 1000;
 
     try {
-      PostModel.update(conditions, thisData, function (err) {
-        if(err) {
-          console.log('err')
-        } else {
-          console.log('success');
-        }
-      });
+      PostModel.update(conditions, thisData);
       // throw new Error('error');
     } catch(err) {
       result.code = -1;
@@ -94,6 +88,58 @@ class Post {
     } finally {
       res.send(JSON.stringify(result));
     }
+  }
+
+  async deletePost(req, res, next) {
+    const result = {
+      code: 0,
+      msg: 'ok',
+      data: 'fine'
+    }
+    const conditions = { _id : req.body.id };
+    console.log(conditions);
+
+    try {
+      PostModel.remove(conditions, function(err) {
+        if(err) {
+          console.log('err')
+        } else {
+          console.log('success')
+        }
+      });
+    } catch(err) {
+      result.code = -1;
+      result.msg = 'delete post error';
+    } finally {
+      res.send(JSON.stringify(result));
+    }
+  }
+
+  async uploadImg(req, res, next) {
+    const result = {
+      code: 0,
+      msg: 'ok',
+      data: 'fine'
+    }
+    // var files = req.body;
+    console.log(req);
+    // const conditions = { _id : req.body.id };
+    // console.log(conditions);
+
+    // try {
+    //   PostModel.remove(conditions, function(err) {
+    //     if(err) {
+    //       console.log('err')
+    //     } else {
+    //       console.log('success')
+    //     }
+    //   });
+    // } catch(err) {
+    //   result.code = -1;
+    //   result.msg = 'delete post error';
+    // } finally {
+    //   res.send(JSON.stringify(result));
+    // }
   }
 
 }
