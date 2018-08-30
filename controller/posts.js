@@ -7,6 +7,7 @@
 */
 
 import { Post as PostModel } from '../models/posts';
+import formidable from 'formidable'
 
 class Post {
   constructor() { }
@@ -116,13 +117,17 @@ class Post {
   }
 
   async uploadImg(req, res, next) {
+    const form = new formidable.IncomingForm();
+    form.parse(req, async (err, fields, files) => {
+      console.log(fields);
+      console.log(files);
+    })
     const result = {
       code: 0,
       msg: 'ok',
       data: 'fine'
     }
     // var files = req.body;
-    console.log(req);
     // const conditions = { _id : req.body.id };
     // console.log(conditions);
 

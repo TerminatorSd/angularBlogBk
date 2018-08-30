@@ -8,8 +8,10 @@
 
 import posts from './posts.js';
 import life from './life.js';
+import reading from './reading.js';
 
 export default app => {
 	app.use('/posts', posts);
   app.use('/life', life);
+  app.use('/reading', reading);
 }
