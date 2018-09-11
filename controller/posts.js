@@ -117,11 +117,21 @@ class Post {
   }
 
   async uploadImg(req, res, next) {
-    const form = new formidable.IncomingForm();
-    form.parse(req, async (err, fields, files) => {
-      console.log(fields);
-      console.log(files);
-    })
+    var imgData = req.body;
+    var base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
+    var dataBuffer = new Buffer(base64Data, 'base64');
+    fs.writeFile("image.png", dataBuffer, function(err) {
+        if(err){
+          res.send(err);
+        }else{
+          res.send("保存成功！");
+        }
+    });
+    // const form = new formidable.IncomingForm();
+    // form.parse(req, async (err, fields, files) => {
+    //   console.log(fields);
+    //   console.log(files);
+    // })
     const result = {
       code: 0,
       msg: 'ok',
