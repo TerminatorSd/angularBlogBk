@@ -136,7 +136,7 @@ class Post {
         result.code = 0;
       }
     });
-    // res.send(JSON.stringify(result));
+    res.send(JSON.stringify(result));
   }
 }
 
