@@ -122,11 +122,11 @@ class Post {
     const imgData = req.body.url;
     const base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
     const dataBuffer = new Buffer(base64Data, 'base64');
-    // let result = {
-    //   code: 0,
-    //   msg: 'ok',
-    //   data: 'fine'
-    // }
+    let result = {
+      code: 0,
+      msg: 'ok',
+      data: 'fine'
+    }
     // 保存图片
     fs.writeFile("image.png", dataBuffer, function(err) {
       if(err){
