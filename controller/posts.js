@@ -127,6 +127,7 @@ class Post {
       msg: 'ok',
       data: 'fine'
     }
+    
     // 保存图片
     fs.writeFile("image.png", dataBuffer, function(err) {
       if(err){
