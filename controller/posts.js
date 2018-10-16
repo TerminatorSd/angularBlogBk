@@ -7,7 +7,8 @@
 */
 
 import { Post as PostModel } from '../models/posts';
-import formidable from 'formidable'
+import formidable from 'formidable';
+import fs from 'fs';
 
 class Post {
   constructor() { }
@@ -117,46 +118,26 @@ class Post {
   }
 
   async uploadImg(req, res, next) {
-    var imgData = req.body;
-    var base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
-    var dataBuffer = new Buffer(base64Data, 'base64');
-    fs.writeFile("image.png", dataBuffer, function(err) {
-        if(err){
-          res.send(err);
-        }else{
-          res.send("保存成功！");
-        }
-    });
-    // const form = new formidable.IncomingForm();
-    // form.parse(req, async (err, fields, files) => {
-    //   console.log(fields);
-    //   console.log(files);
-    // })
-    const result = {
-      code: 0,
-      msg: 'ok',
-      data: 'fine'
-    }
-    // var files = req.body;
-    // const conditions = { _id : req.body.id };
-    // console.log(conditions);
-
-    // try {
-    //   PostModel.remove(conditions, function(err) {
-    //     if(err) {
-    //       console.log('err')
-    //     } else {
-    //       console.log('success')
-    //     }
-    //   });
-    // } catch(err) {
-    //   result.code = -1;
-    //   result.msg = 'delete post error';
-    // } finally {
-    //   res.send(JSON.stringify(result));
+    // 获得图片url
+    const imgData = req.body.url;
+    // const base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
+    // const dataBuffer = new Buffer(base64Data, 'base64');
+    // let result = {
+    //   code: 0,
+    //   msg: 'ok',
+    //   data: 'fine'
     // }
+    // 保存图片
+    fs.writeFile("image.png", dataBuffer, function(err) {
+      if(err){
+        result.code = -1;
+        result.msg = 'error';
+      }else{
+        result.code = 0;
+      }
+    });
+    // res.send(JSON.stringify(result));
   }
-
 }
 
 export default new Post();
