@@ -134,7 +134,7 @@ class Post {
     }
 
     // 保存图片
-    fs.writeFile("image.png", dataBuffer, function(err) {
+    fs.writeFile('upload_img/' + imgName, dataBuffer, function(err) {
       if(err){
         result.code = -1;
         result.msg = 'error';
