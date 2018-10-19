@@ -130,7 +130,7 @@ class Post {
     let result = {
       code: 0,
       msg: 'ok',
-      data: 'fine'
+      data: {}
     }
 
     // 保存图片
@@ -140,9 +140,11 @@ class Post {
         result.msg = 'error';
       }else{
         result.code = 0;
+        // 返回图片位置
+        result.data.url = 'http://localhost/angularBlogBk/upload_img/' + imgName;
       }
+      res.send(JSON.stringify(result));
     });
-    res.send(JSON.stringify(result));
   }
 }
 
