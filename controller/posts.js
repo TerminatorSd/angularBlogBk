@@ -128,7 +128,6 @@ class Post {
     // 设置图像名
     const imgName = req.body.name.split('.')[0] + '_' + Date.parse(new Date()) 
         + '.' + req.body.name.split('.')[1];
-    console.log(imgName);
 
     let result = {
       code: 0,
