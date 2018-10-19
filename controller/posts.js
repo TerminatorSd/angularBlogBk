@@ -60,8 +60,11 @@ class Post {
     thisData.updated_at = Date.parse(new Date()) / 1000;
 
     try {
-      PostModel.update(conditions, thisData);
-      // throw new Error('error');
+      PostModel.update(conditions, thisData, function(err, raw) {
+        if(err) {
+          console.log(err);
+        }
+      });
     } catch(err) {
       result.code = -1;
       result.msg = 'update detail error';
