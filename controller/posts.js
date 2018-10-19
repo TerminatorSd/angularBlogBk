@@ -122,12 +122,17 @@ class Post {
     const imgData = req.body.url;
     const base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
     const dataBuffer = new Buffer(base64Data, 'base64');
+    // 设置图像名
+    const imgName = req.body.name.split('.')[0] + '_' + Date.parse(new Date()) 
+        + '.' + req.body.name.split('.')[1];
+    console.log(imgName);
+
     let result = {
       code: 0,
       msg: 'ok',
       data: 'fine'
     }
-    
+
     // 保存图片
     fs.writeFile("image.png", dataBuffer, function(err) {
       if(err){
