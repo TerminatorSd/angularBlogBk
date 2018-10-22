@@ -5,7 +5,6 @@
  * @modify date 2018-08-19 10:46:25
  * @desc angular blog backend entry
 */
-
 "use strict"
 
 import db from './mongodb/db.js';
