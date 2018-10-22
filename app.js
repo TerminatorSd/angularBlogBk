@@ -43,8 +43,10 @@ const imgBaseUrl = '../'
 // app.use(history());
 app.use(cookieParser());
 // 不添加这个可能拿不到json body 数据
-app.use(bodyParse.json());
-app.use(bodyParse.urlencoded({extended:false}));
+// 设置图片大小限制
+app.use(bodyParse.json({limit: '10mb'}));
+app.use(bodyParse.urlencoded({limit: '10mb', extended: true}));
+
 app.use(express.static('public'));
 // var MongoStore = connectMongo(session);
 // app.use(session({
