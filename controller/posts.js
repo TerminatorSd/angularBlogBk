@@ -143,7 +143,7 @@ class Post {
       }else{
         result.code = 0;
         // 返回图片位置
-        result.data.url = 'http://localhost/angularBlogBk/upload_img/' + imgName;
+        result.data.url = imgName;
       }
       res.send(JSON.stringify(result));
     });
